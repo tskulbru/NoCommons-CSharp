@@ -57,5 +57,8 @@
     <Compile Include="..\NoCommons-CSharp\Common\StringNumberValidator.cs">
       <Link>Common\StringNumberValidator.cs</Link>
     </Compile>
+    <Compile Include="..\NoCommons-CSharp\Common\Constants.cs">
+      <Link>Common\Constants.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

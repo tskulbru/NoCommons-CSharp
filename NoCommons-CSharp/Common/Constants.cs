@@ -1,6 +1,6 @@
 using System;
 
-namespace NoCommonsCSharp
+namespace NoCommonsCSharp.Common
 {
 	public class Constants
 	{

@@ -41,10 +41,13 @@
     <Compile Include="Banking\KIDNumber.cs" />
     <Compile Include="Banking\KIDNumberValidator.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Person\SocialSecurityNumber.cs" />
+    <Compile Include="Person\Sex.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Banking\" />
     <Folder Include="Common\" />
+    <Folder Include="Person\" />
   </ItemGroup>
 </Project>
