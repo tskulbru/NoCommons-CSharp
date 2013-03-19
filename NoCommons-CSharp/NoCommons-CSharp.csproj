@@ -38,6 +38,9 @@
     <Compile Include="Banking\BankAccountValidator.cs" />
     <Compile Include="Common\StringNumber.cs" />
     <Compile Include="Common\StringNumberValidator.cs" />
+    <Compile Include="Banking\KIDNumber.cs" />
+    <Compile Include="Banking\KIDNumberValidator.cs" />
+    <Compile Include="Common\Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

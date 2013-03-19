@@ -9,12 +9,29 @@ namespace NoCommonsCSharp.Common
 		public const string ERROR_INVALID_CHECKSUM = "Invalid checksum : ";
 		public const string ERROR_SYNTAX = "Only digits are allowed : ";
 
+		/// <summary>
+		/// Calculates the checksum for the given weights and number.
+		/// </summary>
+		/// <returns>The mod11 check sum.</returns>
+		/// <param name="weights">Weights.</param>
+		/// <param name="number">Number.</param>
 		protected static int CalculateMod11CheckSum(int[] weights, StringNumber number) {
 			int c = CalculateChecksum(weights, number, false) % 11;
 			if (c == 1) {
 				throw new ArgumentException(ERROR_INVALID_CHECKSUM + number);
 			}
 			return c == 0 ? 0 : 11 - c;
+		}
+
+		/// <summary>
+		/// Calculates the check sum for the given weights and number.
+		/// </summary>
+		/// <returns>The mod10 check sum.</returns>
+		/// <param name="weights">Weights.</param>
+		/// <param name="number">Number.</param>
+		protected static int CalculateMod10CheckSum(int[] weights, StringNumber number) {
+			int c = CalculateChecksum(weights, number, true) % 10;
+			return c == 0 ? 0 : 10 - c;
 		}
 
 		protected static void ValidateLengthAndAllDigits(String numberString, int length) {

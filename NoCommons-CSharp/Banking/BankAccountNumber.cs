@@ -40,8 +40,8 @@ namespace NoCommonsCSharp.Banking
 		/// <returns>The grouped value.</returns>
 		public string GetGroupedValue() {
 			StringBuilder sb = new StringBuilder();
-			sb.Append(GetRegisternummer()).Append(".");
-			sb.Append(GetAccountType()).Append(".");
+			sb.Append(GetRegisternummer()).Append(Constants.DOT);
+			sb.Append(GetAccountType()).Append(Constants.DOT);
 			sb.Append(GetPartAfterAccountType());
 			return sb.ToString();
 		}
