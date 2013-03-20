@@ -9,7 +9,9 @@ namespace NoCommonsCSharp.Banking
 		const int LENGTH = 11;
 		const int REGISTERNUMMER_START_DIGIT = 0;
 		const int ACCOUNTTYPE_START_DIGIT = 4;
-
+		
+		static Random random;
+		
 		/// <summary>
 		/// Returns a List with random but syntactically valid AccountNumber instances
 		/// for a given AccountType.
@@ -21,7 +23,7 @@ namespace NoCommonsCSharp.Banking
 			BankAccountValidator.ValidateAccountTypeSyntax(accountType);
 			return GetAccountNumberListUsingGenerator(new AccountTypeAccountNumberDigitGenerator(accountType), length);
 		}
-
+		
 		/// <summary>
 		/// Returns a List with random but syntactically valid BankAccountNumber instances
 		/// for a given RegisterNumber.
@@ -33,7 +35,7 @@ namespace NoCommonsCSharp.Banking
 			BankAccountValidator.ValidateRegisterNumberSyntax(registerNumber);
 			return GetAccountNumberListUsingGenerator(new RegisterNumberAccountNumberDigitGenerator(registerNumber), length);
 		}
-
+		
 		/// <summary>
 		/// Returns a List with completely random but syntatically valid BankAccountNumber instances
 		/// </summary>
@@ -42,10 +44,11 @@ namespace NoCommonsCSharp.Banking
 		public static List<BankAccountNumber> GetAccountNumberList(int length) {
 			return GetAccountNumberListUsingGenerator(new NormalAccountNumberDigitGenerator(), length);
 		}
-
+		
 		static List<BankAccountNumber> GetAccountNumberListUsingGenerator(AccountNumberDigitGenerator generator, int length) {
 			List<BankAccountNumber> result = new List<BankAccountNumber>();
 			int numAddedToList = 0;
+			random = new Random();
 			while (numAddedToList < length) {
 				BankAccountNumber accountNumber;
 				try {
@@ -59,11 +62,11 @@ namespace NoCommonsCSharp.Banking
 			}
 			return result;
 		}
-
+		
 		internal abstract class AccountNumberDigitGenerator {
 			internal abstract string GenerateAccountNumber();
 		}
-
+		
 		internal class AccountTypeAccountNumberDigitGenerator : AccountNumberDigitGenerator {
 			readonly string accountType;
 			
@@ -78,21 +81,21 @@ namespace NoCommonsCSharp.Banking
 						accountNumberBuffer.Append(accountType);
 						i += accountType.Length;
 					} else {
-						accountNumberBuffer.Append((int) (new Random().Next() * 10));
+						accountNumberBuffer.Append((int) (random.Next(0, 10)));
 						i++;
 					}
 				}
 				return accountNumberBuffer.ToString();
 			}
 		}
-
+		
 		internal class RegisterNumberAccountNumberDigitGenerator : AccountNumberDigitGenerator {
 			readonly string registerNr;
 			
 			internal RegisterNumberAccountNumberDigitGenerator(string registerNr) {
 				this.registerNr = registerNr;
 			}
-
+			
 			internal override string GenerateAccountNumber() {
 				StringBuilder accountNumberBuffer = new StringBuilder(LENGTH);
 				for (int i = 0; i < LENGTH;) {
@@ -100,20 +103,20 @@ namespace NoCommonsCSharp.Banking
 						accountNumberBuffer.Append(registerNr);
 						i += registerNr.Length;
 					} else {
-						accountNumberBuffer.Append((int) (new Random().Next() * 10));
+						accountNumberBuffer.Append((int) (random.Next(0, 10)));
 						i++;
 					}
 				}
 				return accountNumberBuffer.ToString();
 			}
 		}
-
+		
 		internal class NormalAccountNumberDigitGenerator : AccountNumberDigitGenerator {
-
+			
 			internal override string GenerateAccountNumber() {
 				StringBuilder accountNumberBuffer = new StringBuilder(LENGTH);
 				for (int i = 0; i < LENGTH; i++) {
-					accountNumberBuffer.Append((int) (new Random().Next() * 10));
+					accountNumberBuffer.Append((int) (random.Next(0, 10)));
 				}
 				return accountNumberBuffer.ToString();
 			}

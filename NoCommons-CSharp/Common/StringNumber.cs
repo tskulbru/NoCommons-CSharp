@@ -17,6 +17,8 @@ namespace NoCommonsCSharp.Common
 		}
 		
 		public int GetAt(int i) {
+			Console.WriteLine(Value[i]);
+			Console.WriteLine(int.Parse (Value[i].ToString()));
 			return int.Parse (Value[i].ToString());
 		}
 		

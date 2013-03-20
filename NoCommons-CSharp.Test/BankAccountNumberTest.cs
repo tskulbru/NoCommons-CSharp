@@ -15,7 +15,7 @@ namespace NoCommonsCSharp.Test
 		public void TestGetAccountNumberList ()
 		{
 			var options = BankAccountNumberCalculator.GetAccountNumberList (LIST_LENGTH);
-			Assert.Equals (LIST_LENGTH, options.Count);
+			Assert.AreEqual (LIST_LENGTH, options.Count);
 			foreach(var option in options) {
 				Assert.IsTrue(BankAccountValidator.IsValid(option.ToString()));
 			}
@@ -24,7 +24,7 @@ namespace NoCommonsCSharp.Test
 		[Test]
 		public void TestGetAccountNumberListForAccountType() {
 			var options = BankAccountNumberCalculator.GetAccountNumberListForAccountType (TEST_ACCOUNT_TYPE, LIST_LENGTH);
-			Assert.Equals (LIST_LENGTH, options.Count);
+			Assert.AreEqual (LIST_LENGTH, options.Count);
 			foreach (var option in options) {
 				Assert.IsTrue(BankAccountValidator.IsValid(option.ToString()));
 				Assert.IsTrue(option.GetAccountType().Equals(TEST_ACCOUNT_TYPE));
@@ -34,7 +34,7 @@ namespace NoCommonsCSharp.Test
 		[Test]
 		public void TestGetAccountNumberListForRegisterNumber() {
 			var options = BankAccountNumberCalculator.GetAccountNumberListForAccountType (TEST_ACCOUNT_TYPE, LIST_LENGTH);
-			Assert.Equals (LIST_LENGTH, options.Count);
+			Assert.AreEqual (LIST_LENGTH, options.Count);
 			foreach (var option in options) {
 				Assert.IsTrue(BankAccountValidator.IsValid(option.ToString()));
 				Assert.IsTrue(option.GetRegisternummer().Equals(TEST_REGISTERNUMMER));

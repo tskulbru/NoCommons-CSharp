@@ -35,7 +35,7 @@ namespace NoCommonsCSharp.Common
 		}
 
 		protected static void ValidateLengthAndAllDigits(String numberString, int length) {
-			if (numberString == null || numberString.Length != length) {
+			if (String.IsNullOrEmpty(numberString) || numberString.Length != length) {
 				throw new ArgumentException(ERROR_SYNTAX + numberString);
 			}
 
@@ -43,7 +43,7 @@ namespace NoCommonsCSharp.Common
 		}
 
 		protected static void ValidateAllDigits(String numberString) {
-			if (numberString == null || numberString.Length <= 0) {
+			if (String.IsNullOrEmpty(numberString) || numberString.Length <= 0) {
 				throw new ArgumentException(ERROR_SYNTAX + numberString);
 			}
 			for (int i = 0; i < numberString.Length; i++) {
